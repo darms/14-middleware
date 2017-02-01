@@ -18,6 +18,18 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //This is an event handler for the filters. First they need to be populated,
+  //and then they need to be handled.
+  //This funciton is called on the articleView object. First it loads in
+  //options and then renders the handlebars template which compiles the data
+  //into the template that is defined in the head of the html document.
+  //Then it takes this information and passes the jquery function to turn this to text,
+  //then the options variable is populated with the article object calling all Authors on it,
+  //this way all of the author information can populate.
+  //lastly, the map function is called as a method on this with the author passed as an
+  //argument to return the template handlebars object with the value and author.
+  //this final step helps cement the transmission of information to create the template.
+  //All that needs to happen now, is to have this called.
   articleView.populateFilters = function() {
     var options;
     var template = Handlebars.compile($('#option-template').text());
@@ -37,6 +49,13 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //This function handles the filters after they have populated and been clicked on.
+  //It does this by grabbing the filters id from the html, invoking the jquery one method on it.
+  //In the jquery API docs it states: 'Attach a handler to an event for the elements. The handler is executed at most once per element per event type.'
+  //Thus this is handling the events 'change' and 'select'- which triggers a function
+  // that allows for the filter to work by traversing the dom through a stored variable
+  // called resource that is later used in the execution path for the page function to
+  //help navigate between these different data points and not refresh the page.
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       var resource = this.id.replace('-filter', '');
@@ -86,6 +105,8 @@
    }; */
 
   // COMMENT: What does this method do?  What is it's execution path?
+  //These are the event handlers for what happens when the filters are used.
+  //First they need to be populated, this is acheived by
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
