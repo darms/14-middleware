@@ -106,7 +106,15 @@
 
   // COMMENT: What does this method do?  What is it's execution path?
   //These are the event handlers for what happens when the filters are used.
-  //First they need to be populated, this is acheived by
+  //First they need to be populated, this is acheived by the event handler uptop,
+  //this is then called below, afterward the function to handle the filters is called.
+  //Just below this commentary and before the event functions are called
+  //the index function is called on the articleView object- this is doing the heavy lifting
+  //that appends the articles to the article id in the DOM and makes it so that These
+  //initially are shown and can hide, this sets up the basic functionality of
+  //the article elements on the dom. Afterward the articles are removed and cycled through
+  //a forEach function that in turn appends the rendering of the articles to the article id
+  //section on the DOM.
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
